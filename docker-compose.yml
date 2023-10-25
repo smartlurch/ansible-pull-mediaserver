@@ -1,0 +1,26 @@
+version: '3'
+services:
+  plex:
+    image: plexinc/pms-docker:latest
+    container_name: plex
+    restart: unless-stopped
+    #devices:
+    # -/dev/dri:/dev/dri
+    ports:
+      - "32400:32400"
+    volumes:
+      - /docker/plex/database:/config
+      - /mnt/media:/media
+      #- dev/shm:/transcode
+  jellyfin:
+    image: jellyfin/jellyfin
+    container_name: jellfin
+    restart: unless-stopped
+    #devices:
+    # -/dev/dri:/dev/dri
+    ports:
+      - "8096:8096"
+    volumes:
+      - /docker/jellyfin/config:/config
+      - /docker/jellyfin/cache:/cache
+      - /mnt/media:/media
