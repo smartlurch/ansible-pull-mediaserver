@@ -12,10 +12,10 @@
         - neofetch
         - tmux
 
- - name: add ansible user
-     user:
-       name: autopull
-       system: yes
+  - name: add ansible user
+    user:
+      name: autopull
+      system: yes
  
    - name: set up sudo for ansible user
      copy:
