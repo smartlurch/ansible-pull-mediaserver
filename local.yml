@@ -11,6 +11,7 @@
         - ranger
         - neofetch
         - tmux
+        - fish
 
   - name: add ansible user
     user:
