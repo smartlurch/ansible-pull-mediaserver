@@ -17,18 +17,18 @@
       name: autopull
       system: yes
  
-   - name: set up sudo for ansible user
-     copy:
-       src: files/sudoer_autopull
-       dest: /etc/sudoers.d/autopull
-       owner: root
-       group: root
-       mode: 0440
+  - name: set up sudo for ansible user
+    copy:
+      src: files/sudoer_autopull
+      dest: /etc/sudoers.d/autopull
+      owner: root
+      group: root
+      mode: 0440
  
-   - name: add ansible-pull cron job
-     cron:
-       name: ansible auto-provision
-       user: autopull
-       minute: "*/10"
-       job: ansible-pull -o -U https://github.com/smartlurch/ansible-pull-mediaserver.git
+  - name: add ansible-pull cron job
+    cron:
+      name: ansible auto-provision
+      user: autopull
+      minute: "*/10"
+      job: ansible-pull -o -U https://github.com/smartlurch/ansible-pull-mediaserver.git
 
