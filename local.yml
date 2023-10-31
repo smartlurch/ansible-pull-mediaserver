@@ -15,7 +15,7 @@
 
   - name: Include docker setup tasks
     ansible.builtin.import_tasks:
-      file: ./tasks/setup_docker.yaml
+      file: ./tasks/setup_docker.yml
           
   - name: add ansible user
     user:
