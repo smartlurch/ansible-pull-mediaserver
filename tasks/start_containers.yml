@@ -1,0 +1,12 @@
+---
+- name: make media directory
+  ansible.builtin.file:
+    path: /mnt/media
+    owner: autopull
+    group: docker
+    mode: '0774'
+    state: directory
+
+- name: run docker-compose up
+  community.docker.docker_compose:
+    project_src: ./files
