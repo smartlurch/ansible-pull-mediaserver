@@ -13,9 +13,14 @@
         - tmux
         - fish
 
+  - name: Include docker setup tasks
+    ansible.builtin.import_tasks:
+      file: setup_docker.yaml
+          
   - name: add ansible user
     user:
       name: autopull
+      groups: "docker"
       system: yes
  
   - name: set up sudo for ansible user
