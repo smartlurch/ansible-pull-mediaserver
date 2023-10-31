@@ -38,3 +38,6 @@
       minute: "*/10"
       job: ansible-pull -o -U https://github.com/smartlurch/ansible-pull-mediaserver.git >> /home/autopull/ansible-pull.log
 
+  - name: Include docker setup tasks
+    ansible.builtin.import_tasks:
+      file: ./tasks/start_containers.yml
