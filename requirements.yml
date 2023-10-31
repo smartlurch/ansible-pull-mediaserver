@@ -1,0 +1,9 @@
+ ---
+ collections:
+   - community.docker
+ roles:
+   - geerlingguy.docker
+   - geerlingguy.pip
+   - geerlingguy.ntp
+   - geerlingguy.security
+   - ironicbadger.docker_compose_generator

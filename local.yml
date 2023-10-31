@@ -31,5 +31,5 @@
       name: ansible auto-provision
       user: autopull
       minute: "*/10"
-      job: ansible-pull -o -U https://github.com/smartlurch/ansible-pull-mediaserver.git >> /var/log/anisble-pull.log
+      job: ansible-pull -o -U https://github.com/smartlurch/ansible-pull-mediaserver.git >> /home/autopull/ansible-pull.log
 
