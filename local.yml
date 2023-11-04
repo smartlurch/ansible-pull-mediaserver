@@ -12,6 +12,7 @@
         - neofetch
         - tmux
         - fish
+        - powertop
 
   - name: Include docker setup tasks
     ansible.builtin.import_tasks:
@@ -37,6 +38,14 @@
       user: autopull
       minute: "*/10"
       job: ansible-pull -o -U https://github.com/smartlurch/ansible-pull-mediaserver.git >> /home/autopull/ansible-pull.log
+
+  - name: mount media from nas
+    ansible.posix.mount:
+      src: storage.mk.lan:/mnt/mydata/videos
+      path: /mnt/media
+      opts: rw,sync,hard
+      state: mounted
+      fstype: nfs
 
   - name: Include docker setup tasks
     ansible.builtin.import_tasks:
