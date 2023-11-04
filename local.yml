@@ -13,7 +13,7 @@
         - tmux
         - fish
         - powertop
-        - nfs-utils
+        - nfs-common
 
   - name: Include docker setup tasks
     ansible.builtin.import_tasks:
