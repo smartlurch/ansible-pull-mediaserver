@@ -1,5 +1,5 @@
 ---
-- hosts: media
+- hosts: localhost
   connection: local
   become: true
 
