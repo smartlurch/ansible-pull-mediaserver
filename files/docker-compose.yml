@@ -5,7 +5,7 @@ services:
     container_name: plex
     restart: unless-stopped
     devices:
-      -/dev/dri:/dev/dri
+      - /dev/dri:/dev/dri
     ports:
       - "32400:32400"
     volumes:
@@ -17,7 +17,7 @@ services:
     container_name: jellyfin
     restart: unless-stopped
     devices:
-      -/dev/dri:/dev/dri
+      - /dev/dri:/dev/dri
     ports:
       - "8096:8096"
     volumes:
