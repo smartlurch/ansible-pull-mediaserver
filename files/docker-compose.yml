@@ -12,7 +12,7 @@ services:
       - /mnt/docker/plex/database:/config
       - /mnt/media:/media
     environment:
-      - PLEX_CLAIM=claim-ise-arsiKPoNcVua21H9
+      - PLEX_CLAIM=claim-LTwAjK-jcMp8UYUkHe8z
         #      - dev/shm:/transcode
   jellyfin:
     image: jellyfin/jellyfin
