@@ -1,7 +1,7 @@
 version: '3'
 services:
   plex:
-    image: plexinc/pms-docker:latest
+    image: lscr.io/linuxserver/plex:latest
     container_name: plex
     restart: unless-stopped
     devices:
@@ -9,9 +9,15 @@ services:
     ports:
       - "32400:32400"
     volumes:
-      - /mnt/docker/plex/database:/config
-      - /mnt/media:/media
+      - /mnt/docker/plex/:/config
+      - /mnt/media/music:/media/music
+      - /mnt/media/pics:/media/pics
+      - /mnt/media/movies-and-tv:/media/movies-tv
     environment:
+      - PUID=998
+      - PGID=1002
+      - TZ=America/Chicago
+      - VERSION=docker
       - PLEX_CLAIM=claim-LTwAjK-jcMp8UYUkHe8z
         #      - dev/shm:/transcode
   jellyfin:

@@ -52,7 +52,7 @@
     ansible.posix.mount:
       src: storage.mk.lan:/mnt/mydata/music
       path: /mnt/media/music
-      opts: rw,sync,hard
+      opts: ro,sync,hard
       state: mounted
       fstype: nfs
   
