@@ -18,7 +18,7 @@ services:
       - PGID=1002
       - TZ=America/Chicago
       - VERSION=docker
-      - PLEX_CLAIM=claim-LTwAjK-jcMp8UYUkHe8z
+      - PLEX_CLAIM=claim-uBLpUwuhpGTVoWSBSWid
         #      - dev/shm:/transcode
   jellyfin:
     image: jellyfin/jellyfin
