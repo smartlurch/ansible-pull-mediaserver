@@ -72,6 +72,6 @@
         #state: mounted
         #fstype: nfs
   
-  - name: Include docker setup tasks
+  - name: Include docker startup tasks
     ansible.builtin.import_tasks:
       file: ./tasks/start_containers.yml
