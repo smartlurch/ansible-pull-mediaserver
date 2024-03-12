@@ -14,6 +14,7 @@
         - fish
         - powertop
         - nfs-common
+        - beets
 
   - name: Include docker setup tasks
     ansible.builtin.import_tasks:
@@ -52,7 +53,7 @@
     ansible.posix.mount:
       src: storage.mk.lan:/mnt/mydata/music
       path: /mnt/media/music
-      opts: ro,sync,hard
+      opts: rw,sync,hard
       state: mounted
       fstype: nfs
   
