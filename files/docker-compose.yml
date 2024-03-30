@@ -33,3 +33,9 @@ services:
       - /mnt/docker/jellyfin/config:/config
       - /mnt/docker/jellyfin/cache:/cache
       - /mnt/media:/media
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
