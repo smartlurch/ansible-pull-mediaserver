@@ -49,7 +49,7 @@
         src: storage.mk.lan:/mnt/mydata/videos
         path: /mnt/media/movies-and-tv
         opts: rw,sync,hard
-        state: mounted
+        state: remounted
         fstype: nfs
 
     - name: mount music from nas
@@ -57,7 +57,7 @@
         src: storage.mk.lan:/mnt/mydata/music
         path: /mnt/media/music
         opts: rw,sync,hard
-        state: mounted
+        state: remounted
         fstype: nfs
 
     - name: mount pics from nas
@@ -65,7 +65,7 @@
         src: storage.mk.lan:/mnt/mydata/pics
         path: /mnt/media/pics
         opts: rw,sync,hard
-        state: mounted
+        state: remounted
         fstype:
           nfs
 
