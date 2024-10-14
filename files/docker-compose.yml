@@ -50,7 +50,7 @@ services:
     # - '8080:8080'
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.pdf.rule=Host(`media.drum-mirfak.ts.net`) && Path(`/pdf`)"
+      - "traefik.http.routers.pdf.rule=Host(`pdf.drum-mirfak.ts.net`)"
       - "traefik.http.routers.pdf.entrypoints=websecure"
       - "traefik.http.routers.pdf.tls=true"
       - "traefik.http.routers.pdf.tls.certresolver=myresolver"
