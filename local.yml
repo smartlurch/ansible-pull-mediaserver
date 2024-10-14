@@ -4,75 +4,79 @@
   become: true
 
   tasks:
-  - name: install packages 
-    package:
-      name:
-        - htop
-        - ranger
-        - neofetch
-        - tmux
-        - fish
-        - powertop
-        - nfs-common
-        - beets
+    - name: install packages
+      package:
+        name:
+          - htop
+          - ranger
+          - fastetch
+          - tmux
+          - fish
+          - powertop
+          - nfs-common
+          - exa
+          - zoxide
+          - bat
+          - beets
 
-  - name: Include docker setup tasks
-    ansible.builtin.import_tasks:
-      file: ./tasks/setup_docker.yml
-          
-  - name: add ansible user
-    user:
-      name: autopull
-      groups: "docker"
-      system: yes
- 
-  - name: set up sudo for ansible user
-    copy:
-      src: files/sudoer_autopull
-      dest: /etc/sudoers.d/autopull
-      owner: root
-      group: root
-      mode: 0440
- 
-  - name: add ansible-pull cron job
-    cron:
-      name: ansible auto-provision
-      user: autopull
-      minute: "*/10"
-      job: ansible-pull -o -U https://github.com/smartlurch/ansible-pull-mediaserver.git >> /home/autopull/ansible-pull.log
+    - name: Include docker setup tasks
+      ansible.builtin.import_tasks:
+        file: ./tasks/setup_docker.yml
 
-  - name: mount movies from nas
-    ansible.posix.mount:
-      src: storage.mk.lan:/mnt/mydata/videos
-      path: /mnt/media/movies-and-tv
-      opts: rw,sync,hard
-      state: mounted
-      fstype: nfs
+    - name: add ansible user
+      user:
+        name: autopull
+        groups: "docker"
+        system: yes
 
-  - name: mount music from nas
-    ansible.posix.mount:
-      src: storage.mk.lan:/mnt/mydata/music
-      path: /mnt/media/music
-      opts: rw,sync,hard
-      state: mounted
-      fstype: nfs
-  
-  - name: mount pics from nas
-    ansible.posix.mount:
-      src: storage.mk.lan:/mnt/mydata/pics
-      path: /mnt/media/pics
-      opts: rw,sync,hard
-      state: mounted
-      fstype: nfs
-  
-        #  - name: mount docker data from nas
-        # ansible.posix.mount:
-        #src: storage.mk.lan:/mnt/mydata/docker
-        #path: /mnt/docker
-        # opts: rw,sync,hard
-        #state: mounted
-        #fstype: nfs
-  
-  - name: Include docker startup tasks
-    ansible.builtin.import_tasks:
-      file: ./tasks/start_containers.yml
+    - name: set up sudo for ansible user
+      copy:
+        src: files/sudoer_autopull
+        dest: /etc/sudoers.d/autopull
+        owner: root
+        group: root
+        mode: 0440
+
+    - name: add ansible-pull cron job
+      cron:
+        name: ansible auto-provision
+        user: autopull
+        minute: "*/10"
+        job: ansible-pull -o -U https://github.com/smartlurch/ansible-pull-mediaserver.git >> /home/autopull/ansible-pull.log
+
+    - name: mount movies from nas
+      ansible.posix.mount:
+        src: storage.mk.lan:/mnt/mydata/videos
+        path: /mnt/media/movies-and-tv
+        opts: rw,sync,hard
+        state: mounted
+        fstype: nfs
+
+    - name: mount music from nas
+      ansible.posix.mount:
+        src: storage.mk.lan:/mnt/mydata/music
+        path: /mnt/media/music
+        opts: rw,sync,hard
+        state: mounted
+        fstype: nfs
+
+    - name: mount pics from nas
+      ansible.posix.mount:
+        src: storage.mk.lan:/mnt/mydata/pics
+        path: /mnt/media/pics
+        opts: rw,sync,hard
+        state: mounted
+        fstype:
+          nfs
+
+          #  - name: mount docker data from nas
+          # ansible.posix.mount:
+          #src: storage.mk.lan:/mnt/mydata/docker
+          #path: /mnt/docker
+          # opts: rw,sync,hard
+          #state: mounted
+          #fstype: nfs
+
+    - name: Include docker startup tasks
+      ansible.builtin.import_tasks:
+        file: ./tasks/start_containers.yml
